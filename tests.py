@@ -6,7 +6,7 @@ import time
 class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
-        self.browser = webdriver.Chrome()
+        self.browser = webdriver.Firefox()
 
     def tearDown(self):
         self.browser.quit()
@@ -42,7 +42,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows)
+            any(row.text == '1: A new To-Do Item' for row in rows),
+            "A new To-Do Item not in table"
         )
 
         # There is still a text box inviting her to add another item. She
